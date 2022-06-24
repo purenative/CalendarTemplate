@@ -2,15 +2,15 @@ import SwiftUI
 
 public struct CalendarWeekView<WeekDayView: View>: View {
     
-    public let minSpacing: CGFloat
+    public let spacing: CGFloat
     public let date: Date
     public let weekdayView: (Date) -> WeekDayView
     
-    public init(minSpacing: CGFloat = .zero,
+    public init(spacing: CGFloat = .zero,
                 date: Date,
                 weekdayView: @escaping (Date) -> WeekDayView) {
         
-        self.minSpacing = minSpacing
+        self.spacing = spacing
         self.date = date
         self.weekdayView = weekdayView
     }
@@ -22,8 +22,8 @@ public struct CalendarWeekView<WeekDayView: View>: View {
             ForEach(dates) { date in
                 weekdayView(date)
                 
-                if date != dates.last {
-                    Spacer(minLength: minSpacing)
+                if spacing > .zero && date != dates.last {
+                    Spacer(minLength: spacing)
                 }
             }
         }

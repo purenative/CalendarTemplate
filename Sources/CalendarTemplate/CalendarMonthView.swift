@@ -2,6 +2,7 @@ import SwiftUI
 
 public struct CalendarMonthView<MonthDayView: View>: View {
     
+    public var spacing: CGFloat = 16
     public let date: Date
     public let monthDayView: (Date) -> MonthDayView
     
@@ -17,7 +18,7 @@ public struct CalendarMonthView<MonthDayView: View>: View {
         let columns = Array(repeating: gridItem,
                             count: 7)
         
-        LazyVGrid(columns: columns, spacing: 16) {
+        LazyVGrid(columns: columns, spacing: spacing) {
             let dates = date.monthDates()
             
             ForEach(0..<((dates.first?.weekday ?? 1) - 1)) { _ in
