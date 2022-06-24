@@ -2,13 +2,15 @@ import SwiftUI
 
 public struct CalendarMonthView<MonthDayView: View>: View {
     
-    public var spacing: CGFloat = 16
+    public let spacing: CGFloat
     public let date: Date
     public let monthDayView: (Date) -> MonthDayView
     
-    public init(date: Date,
+    public init(spacing: CGFloat = .zero,
+                date: Date,
                 monthDayView: @escaping (Date) -> MonthDayView) {
         
+        self.spacing = spacing
         self.date = date
         self.monthDayView = monthDayView
     }
