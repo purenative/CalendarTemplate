@@ -16,7 +16,7 @@ public struct CalendarMonthView<MonthDayView: View>: View {
     }
     
     public var body: some View {
-        let gridItem = GridItem(.flexible())
+        let gridItem = GridItem(.flexible(), spacing: spacing)
         let columns = Array(repeating: gridItem,
                             count: 7)
         
